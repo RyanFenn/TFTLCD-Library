@@ -1,5 +1,5 @@
 # TFTLCD Library
-Arduino library for 8-bit TFT LCDs. 
+Arduino library for 8-bit TFT LCDs, specifically modified to work with a custom circuit board.
 
 The TFT LCD shield that was used for testing was sold by Kumantech. Here is a link to their product: 
 
