@@ -1,3 +1,6 @@
+// NOTES: - This file has been modified by Ryan. To find all instances of modification, search this file for "modified by Ryan" (or "Ryan") using CNTL + F shortcut. 
+//       - The original file can be found here : https://github.com/adafruit/TFTLCD-Library/blob/master/Adafruit_TFTLCD.cpp
+
 // IMPORTANT: LIBRARY MUST BE SPECIFICALLY CONFIGURED FOR EITHER TFT SHIELD
 // OR BREAKOUT BOARD USAGE.  SEE RELEVANT COMMENTS IN Adafruit_TFTLCD.h
 
@@ -100,12 +103,16 @@ void Adafruit_TFTLCD::init(void) {
   WR_IDLE;
   RD_IDLE;
   CD_DATA;
-  digitalWrite(5, HIGH); // Reset line
-  pinMode(A3, OUTPUT);   // Enable outputs
-  pinMode(A2, OUTPUT);
-  pinMode(A1, OUTPUT);
-  pinMode(A0, OUTPUT);
-  pinMode( 5, OUTPUT);
+	
+  //~~~ modified by Ryan (lines 108 to 114) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  digitalWrite(39, HIGH); // LCD_RESET      //Digital pin 39 = PG2
+  pinMode(A10, OUTPUT);   // LCD_CS  		//A10 = PK2
+  pinMode(A9, OUTPUT);    // LCD_CD  		//A9  = PK1
+  pinMode(34, OUTPUT);    // LCD_WR  		//Digital pin 34 = PC3 
+  pinMode(35, OUTPUT);    // LCD_RD  		//Digital pin 35 = PC2
+  pinMode(39, OUTPUT);    // LCD_RESET    	//Digital pin 39 = PG2
+  //~~~ eo modified by Ryan ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+	
 #endif
 
   setWriteDir(); // Set up LCD data port(s) for WRITE operations
@@ -351,9 +358,13 @@ void Adafruit_TFTLCD::reset(void) {
   RD_IDLE;
 
 #ifdef USE_ADAFRUIT_SHIELD_PINOUT
-  digitalWrite(5, LOW);
+	
+//~~~ modified by Ryan (lines 363 to 366) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  digitalWrite(39, LOW);   //LCD_RESET    //Digital pin 39 = PG2  
   delay(2);
-  digitalWrite(5, HIGH);
+  digitalWrite(39, HIGH);  //reset pin
+//~~~ eo modified by Ryan ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~	
+
 #else
   if(_reset) {
     digitalWrite(_reset, LOW);
