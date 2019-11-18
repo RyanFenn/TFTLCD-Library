@@ -1,3 +1,6 @@
+// NOTE: - This file has been modified by Ryan. To find all instances of modification, search this file for "modified by Ryan" (or "Ryan") using CNTL + F shortcut. 
+//       - The original file can be found here : https://github.com/adafruit/TFTLCD-Library/blob/master/Adafruit_TFTLCD.h
+
 // IMPORTANT: SEE COMMENTS @ LINE 15 REGARDING SHIELD VS BREAKOUT BOARD USAGE.
 
 // Graphics library by ladyada/adafruit with init code from Rossum
@@ -17,7 +20,7 @@
 // **** IF USING THE LCD BREAKOUT BOARD, COMMENT OUT THIS NEXT LINE. ****
 // **** IF USING THE LCD SHIELD, LEAVE THE LINE ENABLED:             ****
 
-//#define USE_ADAFRUIT_SHIELD_PINOUT 1
+#define USE_ADAFRUIT_SHIELD_PINOUT 1     //modified by Ryan (this line was originally commented out)
 
 class Adafruit_TFTLCD : public Adafruit_GFX {
 
