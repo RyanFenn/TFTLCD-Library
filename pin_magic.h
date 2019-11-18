@@ -1,3 +1,6 @@
+// NOTE: - This file has been modified by Ryan. To find all instances of modification, search this file for "modified by Ryan" (or "Ryan") using CNTL + F shortcut. 
+//       - The original file can be found here : https://github.com/adafruit/TFTLCD-Library/blob/master/pin_magic.h
+
 #ifndef _pin_magic_
 #define _pin_magic_
 
@@ -35,7 +38,7 @@
 // LCD Data Bit :    7    6    5    4    3    2    1    0
 // Digital pin #:    7    6   13    4   11   10    9    8
 // Uno port/pin :  PD7  PD6  PB5  PD4  PB3  PB2  PB1  PB0
-// Mega port/pin:  PH4  PH3  PB7  PG5  PB5  PB4  PH6  PH5
+// Mega port/pin:  PA2  PA3  PA4  PA5  PA6  PA7  PA0  PA1  //modified by Ryan
 // Leo port/pin :  PE6  PD7  PC7  PD4  PB7  PB6  PB5  PB4
 // Due port/pin : PC23 PC24 PB27 PC26  PD7 PC29 PC21 PC22
 // Breakout pin usage:
@@ -135,30 +138,30 @@
 
  #ifdef USE_ADAFRUIT_SHIELD_PINOUT
 
-  #define RD_PORT PORTF
-  #define WR_PORT PORTF
-  #define CD_PORT PORTF
-  #define CS_PORT PORTF
-  #define RD_MASK B00000001
-  #define WR_MASK B00000010
-  #define CD_MASK B00000100
-  #define CS_MASK B00001000
+//~~~ modified by Ryan (lines 141 to 164) ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  #define RD_PORT PORTC
+  #define WR_PORT PORTC
+  #define CD_PORT PORTK
+  #define CS_PORT PORTK
+  #define RD_MASK B00000100
+  #define WR_MASK B00001000
+  #define CD_MASK B00000010
+  #define CS_MASK B00000100
 
   #define write8inline(d) {                                              \
-    PORTH = (PORTH&B10000111)|(((d)&B11000000)>>3)|(((d)&B00000011)<<5); \
-    PORTB = (PORTB&B01001111)|(((d)&B00101100)<<2);                      \
-    PORTG = (PORTG&B11011111)|(((d)&B00010000)<<1);                      \
-    WR_STROBE; }
+	PORTA = (PORTA&B00000000)|(((d)&B10000000)>>5)|(((d)&B01000000)>>3)|(((d)&B00100000)>>1)|(((d)&B00010000)<<1)|(((d)&B00001000)<<3)|(((d)&B00000100)<<5)|(((d)&B00000010)>>1)|(((d)&B00000001)<<1);  \
+    WR_STROBE; }  
   #define read8inline(result) {                                      \
     RD_ACTIVE;                                                       \
     DELAY7;                                                          \
-    result = ((PINH & B00011000) << 3) | ((PINB & B10110000) >> 2) | \
-             ((PING & B00100000) >> 1) | ((PINH & B01100000) >> 5);  \
-    RD_IDLE; }
+	result = ((PINA&B10000000)<<5)|((PINA&B01000000)<<3)|((PINA&B00100000)<<1)|((PINA&B00010000)>>1)|((PINA&B00001000)>>3)|((PINA&B00000100)>>5)|((PINA&B00000010)<<1)|((PINA&B00000001)>>1);  \
+    RD_IDLE; }  
+	
   #define setWriteDirInline() {                                   \
-    DDRH |=  B01111000; DDRB |=  B10110000; DDRG |=  B00100000; }
+	DDRA |= ~B00000000; }   //all pins in port are set to output
   #define setReadDirInline()  {                                   \
-    DDRH &= ~B01111000; DDRB &= ~B10110000; DDRG &= ~B00100000; }
+    DDRA &= ~B11111111;  }  //all pins in port are set to input	
+//~~~ eo modified by Ryan ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
  #else // Mega w/Breakout board
 
