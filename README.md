@@ -1,6 +1,11 @@
 # Adafruit library for 8-bit TFT LCDs such as ILI9325, ILI9328, etc
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Ryan's notes: 
 This library has been modified by RyanFenn so that it can be used with a custom circuit board
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Adafruit information below: 
 
 This is a library for our Adafruit 16-channel PWM & Servo driver, shield or FeatherWing
 
