@@ -1,24 +1,35 @@
-# Adafruit library for 8-bit TFT LCDs such as ILI9325, ILI9328, etc
+# TFTLCD Library
+Arduino library for 8-bit TFT LCDs. 
 
-Ryan's notes: 
-- This library has been modified by RyanFenn so that it can be used with a custom circuit board
+The TFT LCD shield that was used for testing was sold by Kumantech. Here is a link to their product: 
 
+http://www.kumantech.com/kuman-uno-r3-28-inch-tft-touch-screen-with-sd-card-socket-for-arduino-nano-mega2560-320x240-28quot-lcd-k60_p0022.html
 
+**Repository notes:** 
+- This library was specifically modified and tested using a 2.8" screen and a custom circuitboard (pinout is different than UNO, Mega, etc.)
+- Adafruit Industries is the original creator of this library (see Adafruit information below for more details). Here is a link to Adafruit's repository: https://github.com/adafruit/TFTLCD-Library
+- As Adafruit states below, the Adafruit_GFX library is required and can be found at https://github.com/adafruit/Adafruit-GFX-Library , but it is IMPORTANT to note that compilation errors may occur with versions later than 1.5.3. Installing version 1.5.3 can be done within the Arduino IDE by going to Library Manager, searching for "Adafruit_GFX_Library" and installing the proper version. 
+- https://github.com/adafruit/Adafruit_TouchScreen is a library that can also be associated with this touch screen
 
-Adafruit information below: 
+**Adafruit Information:** 
 
-This is a library for our Adafruit 16-channel PWM & Servo driver, shield or FeatherWing
+This library works with the Adafruit 2.8" TFT Breakout w/SD card
+  ----> http://www.adafruit.com/products/335
+as well as Adafruit TFT Touch Shield
+  ----> http://www.adafruit.com/products/376
+ 
+Check out the links above for our tutorials and wiring diagrams.
+These displays use 8-bit parallel to communicate, 12 or 13 pins are required
+to interface (RST is optional).
+Adafruit invests time and resources providing this open source code,
+please support Adafruit and open-source hardware by purchasing
+products from Adafruit!
 
-Pick one up today in the adafruit shop!
-  * https://www.adafruit.com/product/335
-  * https://www.adafruit.com/product/376
+Written by Limor Fried/Ladyada for Adafruit Industries.
+MIT license, all text above must be included in any redistribution
 
-These displays use 8-bit parallel to communicate, 12 or 13 pins are required to interface (RST is optional).
+To download. click the DOWNLOADS button in the top right corner, rename the uncompressed folder Adafruit_TFTLCD. Check that the Adafruit_TFTLCD folder contains Adafruit_TFTLCD.cpp and Adafruit_TFTLCD.
 
-Adafruit invests time and resources providing this open source code, please support Adafruit and open-source hardware by purchasing products from Adafruit!
+Place the Adafruit_TFT library folder your <arduinosketchfolder>/libraries/ folder. You may need to create the libraries subfolder if its your first library. Restart the IDE
 
-Written by Limor Fried/Ladyada for Adafruit Industries. BSD license, check license.txt for more information. 
-
-All text above must be included in any redistribution
-
-To install, use the Arduino Library Manager and search for "Adafruit 2.8" TFT display Library" and install the library.
+Also requires the Adafruit_GFX library for Arduino. https://github.com/adafruit/Adafruit-GFX-Library
