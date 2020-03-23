@@ -277,8 +277,6 @@ void Adafruit_TFTLCD::begin(uint16_t id) {
     setAddrWindow(0, 0, TFTWIDTH-1, TFTHEIGHT-1);
 
   } else if (id == 0x9341) {
-
-    uint16_t a, d;
     driver = ID_9341;
     CS_ACTIVE;
     writeRegister8(ILI9341_SOFTRESET, 0);
